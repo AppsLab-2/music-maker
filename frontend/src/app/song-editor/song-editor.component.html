@@ -1,0 +1,6 @@
+<div class="mainGrid" (contextmenu)="($event.preventDefault())" (mousedown)="mouseDown($event)" (dragover)="onDragOver($event)">
+    <div *ngFor="let num of [].constructor(20); index as i" [style.grid-row]="i+1" [style.grid-column]="1" style="background-color: #b9fac5; width: 25px;">{{i+1}}</div>
+    <div *ngFor="let item of patternService.songPatternList; index as i" class="test" [style.grid-row]="item.x" [style.grid-column]="item.y" 
+    (contextmenu)="onRightClick(item, $event)" draggable="true" (drag)="onDrag(item, $event)" (dragstart)="onDragStart($event, item)">{{item.name}}</div>
+    <div class="arrow"></div><div class="line"></div>
+</div>

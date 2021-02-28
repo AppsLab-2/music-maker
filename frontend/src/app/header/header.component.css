@@ -1,0 +1,40 @@
+.timer{
+    border: solid white;
+    border-width: 1px;
+    color: white;
+    display: inline-block;
+    margin: max(5px, 0.5336179295624333vh);
+    font-size: max(3.6286019210245466vh, 34px);
+    padding: max(10px, 1.0672358591248665vh) 9px;
+    margin-left: 50px;
+    position: absolute;
+    
+    font-family: verdana,sans-serif;
+}
+
+.button{
+    height: max(35px, 3.7353255069370332vh);
+    width: max(35px, 3.7353255069370332vh);
+    background-color: white;
+    display: inline-block;
+    margin: max(8px, .6vh);
+}
+
+.audio{
+    display: inline-block;
+    position: absolute;
+    margin: max(7.496px, .8vh);
+    margin-left: max(230.502px, 24.6vh);
+}
+
+.audio div{
+    width: max(281.1px, 30vh);
+    height: max(14.055px, 1.5vh);
+    border: solid white;
+    border-width: 1px;
+    color: white;
+}
+
+.mat-icon{
+    margin-top: 3px;
+}

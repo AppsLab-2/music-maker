@@ -1,0 +1,32 @@
+.grid-container {
+  display: grid;
+  height: 100vh;
+  background-color: #1d1f22;
+  grid-template-areas:
+    'header header header'
+    'sample main main'
+    'list pattern mixer';
+  grid-template-rows: max(50px, 5.336179295624333vh) auto max(200px, 25vh);
+  grid-template-columns: max(150px, 16.008537886873vh) auto auto;
+  grid-gap: 1px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}

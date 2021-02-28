@@ -1,0 +1,12 @@
+<div *ngIf="patternService.selectedPattern != null">
+    <div style="margin: 20px 30px 0px; position: fixed;">
+    <p style="margin: 0px; color: white; font-size: 12px;">Name:</p>
+    <input type="text" [(ngModel)]="patternService.selectedPattern.name" style="margin-bottom: 10px; width: 120px; text-align: center;  border-radius: 3px; 
+    padding: 5px 0px; color: white; background-color: #555961; outline: none; border:none">
+
+    <div class="button" (click)="patternService.edit()" [style.background-color]="patternService.showEditor ? '#757981' : '#555961'">Edit Pattern</div>
+    <div class="button" (click)="patternService.duplicatePattern()">Duplicate Pattern</div>
+    <div class="button" style="background-color: #69474b;" (click)="patternService.deletePattern()">Delete Pattern</div>
+    
+    </div>   
+</div>

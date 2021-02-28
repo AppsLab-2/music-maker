@@ -1,0 +1,46 @@
+.mainGrid{
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(20, 50px);
+    grid-template-columns: repeat(auto-fill, 25px);
+    grid-auto-flow: row;
+    grid-gap: 1px;
+    background-color: #43464d;
+    padding-top: 15px;
+    -webkit-user-select: none;
+    /*
+    --c:linear-gradient(rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.8));
+  --p:15px;
+  --w:calc(17.6% - 2*var(--p));
+  background:
+   var(--c) var(--p) var(--p) / var(--w)  1px,
+   var(--c) var(--p) calc(1*(var(--w) / 3) + var(--p)) / var(--w) 1px,
+   var(--c) var(--p) calc(2*(var(--w) / 3) + var(--p)) / var(--w) 1px,
+   var(--c) var(--p) calc(3*(var(--w) / 3) + var(--p)) / var(--w) 1px;
+   
+  padding:calc(--p);
+  background-repeat: repeat-x; */
+}
+
+.test{
+    background-color: white;
+    width: 103px;
+    height: 50px;
+}
+
+.arrow{
+  width: 0; 
+  height: 0; 
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #f00;
+  margin-top: -15px;
+  margin-left: -16px;
+}
+.line{
+  margin-left: -28px;
+  width: 2px;
+  height: calc(51px*20);
+  background-color: red;
+  z-index: 5;
+}

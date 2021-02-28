@@ -1,0 +1,8 @@
+<div class="mainGrid" (mousedown)="mouseDown($event)" (contextmenu)="($event.preventDefault())" (dragover)="onDragOver($event)" *ngIf="patternService.selectedPattern != null">
+    <div *ngFor="let key of keys; index as i" class="key test" [style.grid-row]="(i+1)">{{key}}0</div>
+    <div *ngFor="let key of keys; index as i" class="key test" [style.grid-row]="(i+1)+7">{{key}}1</div>
+    <div *ngFor="let key of keys; index as i" class="key test" [style.grid-row]="(i+1)+14">{{key}}2</div>
+    <div class="arrow"></div><div class="line"></div>
+    <div *ngFor="let note of patternService.selectedPattern.notes; index as i" class="test" [style.grid-row]="note.key" [style.grid-column]="note.col" 
+    (contextmenu)="onRightClick(note, $event)" draggable="true" (drag)="onDrag(note, $event)" (dragstart)="onDragStart($event, note)"></div>
+</div>
