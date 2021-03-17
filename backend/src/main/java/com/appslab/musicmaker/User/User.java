@@ -10,20 +10,21 @@ public class User
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private String name;
+    private String userName;
     private String password;
+
     public User(String name,String password)
     {
-        this.name = name;
+        this.userName = name;
         this.password = password;
 
     }
 
     public String getName() {
-        return name;
+        return userName;
     }
 
-    public String getPasswoord() {
+    public String getPassword() {
         return password;
     }
 }
