@@ -11,6 +11,7 @@ import { PatternListComponent } from './pattern-list/pattern-list.component';
 import { SampleListComponent } from './sample-list/sample-list.component';
 import { PatternPropertiesComponent } from './pattern-properties/pattern-properties.component';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     BrowserAnimationsModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

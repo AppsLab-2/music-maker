@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { PatternPlayerService } from '../pattern-player.service';
 import { PatternService } from '../pattern.service';
 
 class note{
   key: number;
   col: number;
+  color: any = '#b9fac5';
   constructor(key: number, col: number){
     this.key = key;
     this.col = col;
@@ -19,12 +21,14 @@ class note{
 export class ToneEditorComponent implements OnInit {
   math = Math;
   keys: string[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
-  constructor(public patternService: PatternService) {
-    
-  }
+  constructor(public patternService: PatternService, private player: PatternPlayerService) {}
 
   ngOnInit() {
     
+  }
+
+  ngOnDestroy(){
+    this.player.stop();
   }
 
   mouseDown(event: MouseEvent){

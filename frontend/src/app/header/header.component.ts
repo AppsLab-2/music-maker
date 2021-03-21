@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PatternPlayerService } from '../pattern-player.service';
+import { PatternService } from '../pattern.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public userService: UserService, public player: PatternPlayerService, public patternService: PatternService) { }
 
   ngOnInit(): void {
   }

@@ -1,9 +1,13 @@
 <button class="button" style="margin-right: 150px;"><mat-icon>view_list</mat-icon></button>
 <div style="display: inline-block; height: 50px;">
     <button class="button"><mat-icon>fast_rewind</mat-icon></button>
-    <button class="button"><mat-icon>play_arrow</mat-icon></button>
-    <button class="button"><mat-icon>stop</mat-icon></button>
+    <button class="button" (click)="player.play(patternService.selectedPattern)"><mat-icon>play_arrow</mat-icon></button>
+    <button class="button" (click)="player.stop()"><mat-icon>stop</mat-icon></button>
     <button class="button"><mat-icon>fast_forward</mat-icon></button>
     <div class="timer">0:00.00</div>
 </div>
 <div class="audio"><div></div><div></div></div>
+<div style="right:10px;  float: right;   margin-top: 8px; margin-right: 15px;">
+    <div style="font-size: 30px; display: inline-block; margin-top: 8px; margin-right: 6px; color: white;">{{userService.username}}</div>
+    <div style="border-radius: 35px; width: 35px; height: 35px; background-color: gray; float: right;"></div>
+</div>
