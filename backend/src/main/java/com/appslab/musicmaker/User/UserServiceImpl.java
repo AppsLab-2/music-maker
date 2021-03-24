@@ -15,4 +15,9 @@ public class UserServiceImpl implements UserService{
     public void saveUser(User user) {
         rep.save(user);
     }
+    @Override
+    public Iterable<User> getUser()
+    {
+        return rep.findAll();
+    }
 }

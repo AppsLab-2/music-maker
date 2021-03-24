@@ -1,5 +1,6 @@
 package com.appslab.musicmaker.User;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,8 +15,13 @@ public class UserController {
 
     UserService ser;
 
-    @PostMapping("/user")
+    @PostMapping("/saveUser")
     public void saveUser(@RequestBody User user) {
         ser.saveUser(user);
+    }
+    @GetMapping("/getUser")
+    public User getUser()
+    {
+        return (User) ser.getUser();
     }
 }

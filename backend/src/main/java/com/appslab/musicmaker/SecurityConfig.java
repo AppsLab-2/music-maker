@@ -17,12 +17,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*http.authorizeRequests()
+        http.authorizeRequests()
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/user").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/").permitAll()
-                .and().formLogin();*/
-        http.cors().and().csrf().disable();
+                .and().formLogin();
+        //http.cors().and().csrf().disable();
     }
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -5,4 +5,5 @@ import org.springframework.stereotype.Component;
 @Component
 public interface UserService {
     void saveUser(User user);
+    Iterable<User> getUser();
 }

@@ -1,16 +1,17 @@
 package com.appslab.musicmaker.User;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
 public class User
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private long id;
+    @Column(name = "user_name")
     private String userName;
+    @Column(name = "user_password")
     private String password;
 
     public User(String name,String password)
