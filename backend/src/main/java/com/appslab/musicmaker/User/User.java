@@ -10,22 +10,28 @@ public class User
     @Column(name = "user_id")
     private long id;
     @Column(name = "user_name")
-    private String userName;
+    private String name;
     @Column(name = "user_password")
     private String password;
 
-    public User(String name,String password)
+    public User(String name, String password)
     {
-        this.userName = name;
+        this.name = name;
         this.password = password;
+    }
+
+    public User(){
 
     }
 
     public String getName() {
-        return userName;
+        return name;
     }
 
     public String getPassword() {
         return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
