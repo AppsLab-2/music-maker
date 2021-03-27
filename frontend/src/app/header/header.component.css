@@ -3,11 +3,11 @@
     border-width: 1px;
     color: white;
     display: inline-block;
-    margin: max(5px, 0.5336179295624333vh);
+
     font-size: max(3.6286019210245466vh, 34px);
     padding: max(10px, 1.0672358591248665vh) 9px;
     margin-left: 50px;
-    position: absolute;
+    
     
     font-family: verdana,sans-serif;
 }
@@ -17,7 +17,7 @@
     width: max(35px, 3.7353255069370332vh);
     background-color: white;
     display: inline-block;
-    margin: max(8px, .6vh);
+    margin-right: max(8px, .6vh);
 }
 
 .audio{
@@ -37,4 +37,17 @@
 
 .mat-icon{
     margin-top: 3px;
+}
+
+.buttonL{
+    display: flex; flex-direction: row; flex-wrap: wrap; align-items: center;
+    margin-left: auto;
+    margin-right: 15px;
+    text-align: center; 
+    border-radius: 3px; 
+    padding: 3px 5px;
+    color: white;
+    cursor: pointer;
+    background-color: #555961;
+    -webkit-user-select: none;
 }

@@ -1,5 +1,5 @@
 <div class="grid-container">
-  <app-header style="grid-area: header; background-color: #202225;">menu</app-header>
+  <app-header style="grid-area: header; background-color: #202225; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center;">menu</app-header>
   <app-tone-editor *ngIf="patternService.showEditor" style="grid-area: main; background-color: #36393F; overflow-y: auto;">main</app-tone-editor>
   <app-song-editor *ngIf="!patternService.showEditor" style="grid-area: main; background-color: #36393F; overflow-y: auto;">main</app-song-editor>
   <div style="grid-area: sample; background-color:#2F3136;">samples</div>
