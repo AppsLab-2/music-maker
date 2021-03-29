@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'
-import { Router } from '@angular/router';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { PatternService } from './pattern.service';
 import { User } from './User';
@@ -33,11 +32,12 @@ export class UserService {
     });
   }
 
-  logout(){
+  logout(){ 
+    this.patternService.patternList = null;
+    this.patternService.selectedPattern = null;
+    this.patternService.showEditor = false;
     this.user = null;
     this.isLogged = false;
-    this.http.post("http://localhost:8080/logout", { withCredentials: true });
-    localStorage.clear();
-    sessionStorage.clear();
+    this.http.post("http://localhost:8080/logout", { withCredentials: true }).subscribe();
   }
 }
