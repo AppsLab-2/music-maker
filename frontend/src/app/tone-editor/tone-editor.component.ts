@@ -24,7 +24,7 @@ export class ToneEditorComponent implements OnInit {
   constructor(public patternService: PatternService, private player: PatternPlayerService) {}
 
   ngOnInit() {
-    
+
   }
 
   ngOnDestroy(){

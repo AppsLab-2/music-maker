@@ -31,7 +31,7 @@ export class LoginFormComponent implements OnInit {
   tryLogin(){
     let user: User = {name: this.loginForm.get("name").value, password: this.loginForm.get("password").value} as User;
     let headers = new HttpHeaders(user ? {'Authorization' : 'Basic ' + btoa(user.name + ':' + user.password)} : {});
-    this.http.get<User>("http://localhost:8080/user", {headers: headers}).subscribe(
+    this.http.get<User>("http://localhost:8080/user", {headers: headers, withCredentials: true}, ).subscribe(
       res => {
         this.data.user = res;
         this.dialogRef.close(this.data);  

@@ -1,5 +1,5 @@
 export interface Pattern{
+    id: number;
     name: String;
-    sample: any;
     notes: any[];
 }

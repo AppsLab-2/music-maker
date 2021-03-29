@@ -26,7 +26,8 @@ export class PatternPlayerService {
   }
 
   stop(){
-    this.sub.unsubscribe();
+    if (this.sub) this.sub.unsubscribe();
+    this.sub = null;
     this.ticks = 0;
   }
 

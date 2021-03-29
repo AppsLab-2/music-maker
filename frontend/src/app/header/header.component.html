@@ -1,4 +1,4 @@
-<button class="button" style="margin-right: 150px;"><mat-icon>view_list</mat-icon></button>
+<button class="button" (click)="patternService.savePattern()" style="margin-right: 150px;"><mat-icon>view_list</mat-icon></button>
 <div style="display: inline-block;">
     <button class="button"><mat-icon>fast_rewind</mat-icon></button>
     <button class="button" (click)="player.play(patternService.selectedPattern)"><mat-icon>play_arrow</mat-icon></button>
