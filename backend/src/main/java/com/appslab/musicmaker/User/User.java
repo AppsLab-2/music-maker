@@ -1,6 +1,9 @@
 package com.appslab.musicmaker.User;
 
+import com.appslab.musicmaker.Pattern.Pattern;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User
@@ -13,6 +16,9 @@ public class User
     private String name;
     @Column(name = "user_password")
     private String password;
+    @Column(name = "user_patterns")
+    @OneToMany(mappedBy="user")
+    private Set<Pattern> patternSet;
 
     public User(String name, String password)
     {

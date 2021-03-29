@@ -10,4 +10,5 @@ public interface UserService {
 
     boolean nameExist(User user);
     void registerNewUserAccount(User user) throws UserExistsException;
+    User getCurrentUser();
 }
