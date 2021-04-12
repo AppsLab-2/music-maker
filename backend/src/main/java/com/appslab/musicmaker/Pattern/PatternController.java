@@ -10,13 +10,13 @@ public class PatternController {
     private PatternService patternService;
 
     @RequestMapping("/savePattern")
-    public long savePattern(@RequestBody Pattern pattern) {
-        return patternService.savePattern(pattern);
+    public long savePattern(@RequestBody Pattern pattern,@RequestParam Long projectId) {
+        return patternService.savePattern(pattern,projectId);
     }
 
     @GetMapping("/getPattern/{id}")
-    public Pattern getPattern(@PathVariable Long id) {
-        return patternService.findById(id);
+    public Pattern getPattern(@PathVariable Long id,@RequestParam Long projectId) {
+        return patternService.findById(id,projectId);
     }
 
     @GetMapping("/getPatternsInfo")

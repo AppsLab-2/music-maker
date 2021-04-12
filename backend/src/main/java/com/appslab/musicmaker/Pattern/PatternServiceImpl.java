@@ -1,11 +1,9 @@
 package com.appslab.musicmaker.Pattern;
 
-import com.appslab.musicmaker.User.UserService;
-import org.springframework.aop.scope.ScopedProxyUtils;
+import com.appslab.musicmaker.Project.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,20 +11,21 @@ public class PatternServiceImpl implements PatternService{
     @Autowired
     private PatternRepository patternRepository;
     @Autowired
-    private UserService userService;
+    private ProjectService projectService;
 
     @Override
-    public long savePattern(Pattern pattern) {
+    public long savePattern(Pattern pattern, Long projectId) {
         System.out.println(pattern.getId());
-        pattern.setUser(userService.getCurrentUser());
+        pattern.setProject(projectService.findById(projectId));
         patternRepository.save(pattern);
         return pattern.getId();
     }
 
+
     @Override
-    public Pattern findById(Long id) {
+    public Pattern findById(Long id,Long projectId) {
         Pattern patt = patternRepository.findById(id).get();
-        if (!patt.FgetUser().equals(userService.getCurrentUser())) return null;
+        if (!patt.getProject().equals(projectService.findById(projectId))) return null;
         return patt;
     }
 
@@ -39,6 +38,7 @@ public class PatternServiceImpl implements PatternService{
             result.add(p);
         });
         return result;
+
     }
 
     @Override

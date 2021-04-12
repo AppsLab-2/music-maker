@@ -1,6 +1,6 @@
 package com.appslab.musicmaker.Pattern;
 
-import com.appslab.musicmaker.User.User;
+import com.appslab.musicmaker.Project.Project;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -17,8 +17,8 @@ public class Pattern {
     @Column(name = "pattern_notes")
     private String notes;
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
-    private User user;
+    @JoinColumn(name="project_id", nullable=false)
+    private Project project;
 
     public Pattern(){
 
@@ -40,12 +40,12 @@ public class Pattern {
         return notes;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setProject(Project Project) {
+        this.project = project;
     }
 
-    public User FgetUser() {
-        return user;
+    public Project getProject() {
+        return project;
     }
 
     public long getId() {
