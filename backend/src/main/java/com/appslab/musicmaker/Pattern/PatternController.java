@@ -10,27 +10,22 @@ public class PatternController {
     private PatternService patternService;
 
     @RequestMapping("/savePattern")
-    public long savePattern(@RequestBody Pattern pattern,@RequestParam Long projectId) {
-        return patternService.savePattern(pattern,projectId);
+    public long savePattern(@RequestBody Pattern pattern, @RequestParam Long projectId) {
+        return patternService.savePattern(pattern, projectId);
     }
 
     @GetMapping("/getPattern/{id}")
-    public Pattern getPattern(@PathVariable Long id,@RequestParam Long projectId) {
-        return patternService.findById(id,projectId);
+    public Pattern getPattern(@PathVariable Long id) {
+        return patternService.findById(id);
     }
 
     @GetMapping("/getPatternsInfo")
-    public Pattern[] getPatternsInfo() {
-        return patternService.getPatternsInfo().toArray(new Pattern[0]);
+    public Pattern[] getPatternsInfo(@RequestParam Long projectId) {
+        return patternService.getPatternsInfo(projectId).toArray(new Pattern[0]);
     }
 
     @DeleteMapping("/getPattern/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    void deletePattern(@PathVariable Long id) {
         patternService.deleteById(id);
-    }
-
-    @PostMapping("/updatePattern/{id}")
-    void updateEmployee(@RequestBody Pattern pattern) {
-        patternService.updatePattern(pattern);
     }
 }

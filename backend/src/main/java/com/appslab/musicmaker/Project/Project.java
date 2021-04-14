@@ -9,11 +9,6 @@ import java.util.Set;
 @Entity
 public class Project
 {
-
-    public Project(String name)
-    {
-        this.name = name;
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "project_id")
@@ -21,10 +16,10 @@ public class Project
     @Column(name = "project_name")
     private String name;
     @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
+    @JoinColumn(name="user_id", nullable = false)
     private User user;
     @Column(name = "project_patterns")
-    @OneToMany
+    @OneToMany(mappedBy = "project")
     private Set<Pattern> patternList;
 
 
@@ -41,8 +36,22 @@ public class Project
     public Set<Pattern> getPatternList() {
         return patternList;
     }
+    public void setPatternList(Set<Pattern> patternList) {
+    this.patternList = patternList;
+}
+
 
     public long getId() {
         return id;
     }
+
+    public Project(String name)
+    {
+        this.name = name;
+    }
+
+    public Project() {
+
+    }
+
 }

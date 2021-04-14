@@ -1,8 +1,13 @@
 package com.appslab.musicmaker.Project;
 
+import com.appslab.musicmaker.Pattern.Pattern;
 import com.appslab.musicmaker.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProjectServiceImpl implements ProjectService{
@@ -13,6 +18,7 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public void saveProject(Project project)
     {
+        project.setUser(userService.getCurrentUser());
         repository.save(project);
     }
 
@@ -23,4 +29,15 @@ public class ProjectServiceImpl implements ProjectService{
         return project;
     }
 
+    @Override
+    public List<Project> getList() {
+        Iterable<Project> infos =  repository.findByuser(userService.getCurrentUser());
+        List<Project> result = new ArrayList<>();
+        infos.forEach(p -> {
+            p.setPatternList(null);
+            p.setUser(null);
+            result.add(p);
+        });
+        return result;
+    }
 }

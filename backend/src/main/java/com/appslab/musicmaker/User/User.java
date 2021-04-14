@@ -18,7 +18,7 @@ public class User
     private String password;
     @Column(name = "user_projects")
     @OneToMany(mappedBy="user")
-    private Set<Project>projectSet;
+    private Set<Project> projectSet;
 
     public Set<Project> getProjectSet() {
         return projectSet;

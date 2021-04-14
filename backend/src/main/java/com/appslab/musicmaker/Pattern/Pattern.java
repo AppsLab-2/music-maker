@@ -17,7 +17,7 @@ public class Pattern {
     @Column(name = "pattern_notes")
     private String notes;
     @ManyToOne
-    @JoinColumn(name="project_id", nullable=false)
+    @JoinColumn(name="project_id", nullable = false)
     private Project project;
 
     public Pattern(){
@@ -40,7 +40,7 @@ public class Pattern {
         return notes;
     }
 
-    public void setProject(Project Project) {
+    public void setProject(Project project) {
         this.project = project;
     }
 
