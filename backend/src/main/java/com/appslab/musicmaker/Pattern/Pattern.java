@@ -14,6 +14,7 @@ public class Pattern {
     private long id;
     @Column(name = "patter_name")
     private String name;
+    @Transient
     private String notes;
     @ManyToOne
     @JoinColumn(name="project_id", nullable = false)

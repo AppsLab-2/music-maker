@@ -1,9 +1,1 @@
-<div class="grid-container">
-  <app-header style="grid-area: header; background-color: #202225; display: flex; flex-direction: row; flex-wrap: wrap; align-items: center;">menu</app-header>
-  <app-tone-editor *ngIf="patternService.showEditor" style="grid-area: main; background-color: #36393F; overflow-y: auto;">main</app-tone-editor>
-  <app-song-editor *ngIf="!patternService.showEditor" style="grid-area: main; background-color: #36393F; overflow-y: auto;">main</app-song-editor>
-  <div style="grid-area: sample; background-color:#2F3136;">samples</div>
-  <app-pattern-list style="grid-area: list; background-color: #2F3136; overflow-y: auto;">patterns</app-pattern-list>
-  <app-pattern-properties style="grid-area: pattern; background-color: #292B2F;">pattern</app-pattern-properties>
-  <div style="grid-area: mixer; background-color: #292B2F;">mixer</div>
-</div>
+<router-outlet></router-outlet>

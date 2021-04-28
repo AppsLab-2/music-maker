@@ -11,6 +11,6 @@ export class PatternListComponent implements OnInit {
   constructor(public patternService: PatternService) { }
 
   ngOnInit(): void {
-    
+    this.patternService.getPatterns();
   }
 }

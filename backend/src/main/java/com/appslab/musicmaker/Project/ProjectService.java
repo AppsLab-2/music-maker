@@ -6,7 +6,8 @@ import java.util.List;
 
 @Component
 public interface ProjectService {
-    void saveProject(Project project);
+    Long saveProject(Project project);
     Project findById(long id);
     List<Project> getList();
+    void deleteById(Long id);
 }

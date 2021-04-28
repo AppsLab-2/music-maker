@@ -1,0 +1,36 @@
+.background{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#1d1f22;
+  height: 100vh;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  width: auto;
+  border-radius: 5px;
+  background-color: #36393F;
+  flex-wrap: wrap
+}
+
+.page{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto 15px 15px
+}
+
+mat-form-field *{
+  color: white;
+}
+
+.delete:hover{
+  background-color: #36393F;
+  border-radius: 4px;
+}
