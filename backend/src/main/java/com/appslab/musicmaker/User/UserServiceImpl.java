@@ -42,5 +42,6 @@ public class UserServiceImpl implements UserService{
     public User getCurrentUser() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         return userRepository.findByname(name).get();
+
     }
 }

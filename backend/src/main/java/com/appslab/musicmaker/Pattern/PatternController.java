@@ -3,14 +3,15 @@ package com.appslab.musicmaker.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @CrossOrigin(origins = { "http://localhost:4200" })
 @RestController
 public class PatternController {
     @Autowired
     private PatternService patternService;
-
     @RequestMapping("/savePattern")
-    public long savePattern(@RequestBody Pattern pattern, @RequestParam Long projectId) {
+    public long savePattern(@RequestBody Pattern pattern, @RequestParam Long projectId) throws IOException {
         return patternService.savePattern(pattern, projectId);
     }
 
@@ -28,4 +29,5 @@ public class PatternController {
     void deletePattern(@PathVariable Long id) {
         patternService.deleteById(id);
     }
+
 }
