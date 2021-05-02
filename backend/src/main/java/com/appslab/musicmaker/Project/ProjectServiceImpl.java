@@ -1,20 +1,25 @@
 package com.appslab.musicmaker.Project;
 
-import com.appslab.musicmaker.Pattern.Pattern;
 import com.appslab.musicmaker.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ProjectServiceImpl implements ProjectService{
-    @Autowired
+
     private ProjectRepository repository;
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public ProjectServiceImpl(ProjectRepository repository, UserService userService) {
+        this.repository = repository;
+        this.userService = userService;
+    }
+
     @Override
     public void saveProject(Project project)
     {

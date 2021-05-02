@@ -16,7 +16,7 @@ public class PatternController {
     }
 
     @GetMapping("/getPattern/{id}")
-    public Pattern getPattern(@PathVariable Long id) {
+    public Pattern getPattern(@PathVariable Long id) throws IOException {
         return patternService.findById(id);
     }
 

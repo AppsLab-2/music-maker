@@ -8,10 +8,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService{
+
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository rep){
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    public UserServiceImpl(UserRepository rep, PasswordEncoder passwordEncoder){
         this.userRepository = rep;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -25,12 +30,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getUserByName(String s) {
+        return userRepository.findByname(s).get();
+    }
+
+    @Override
     public boolean nameExist(User user){
         return userRepository.findByname(user.getName()).isPresent();
     }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
     @Override
     public void registerNewUserAccount(User user) throws UserExistsException {
         if (nameExist(user)) throw new UserExistsException("User with name: " + user.getName() + " already exists");

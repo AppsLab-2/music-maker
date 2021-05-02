@@ -14,12 +14,19 @@ import java.util.List;
 
 @Service
 public class PatternServiceImpl implements PatternService{
-    @Autowired
+
     private PatternRepository patternRepository;
-    @Autowired
+
     private ProjectService projectService;
-    @Autowired
+
     private UserService userService;
+
+    @Autowired
+    public PatternServiceImpl(PatternRepository patternRepository, ProjectService projectService, UserService userService) {
+        this.patternRepository = patternRepository;
+        this.projectService = projectService;
+        this.userService = userService;
+    }
 
     @Override
     public long savePattern(Pattern pattern, Long projectId) throws IOException {

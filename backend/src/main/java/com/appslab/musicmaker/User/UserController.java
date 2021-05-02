@@ -23,7 +23,7 @@ public class UserController {
 
     @GetMapping("/getUser")
     public User getUser(@RequestBody String s) {
-        return userRepository.findByname(s).get();
+        return ser.getUserByName(s);
     }
 
     @RequestMapping("/user")
