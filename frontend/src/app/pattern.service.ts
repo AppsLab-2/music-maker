@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pattern } from './Pattern';
+import { ProjectService } from './project.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,10 @@ export class PatternService {
   songPatternList: any[] = [];
   showEditor: boolean = false;
 
-  constructor(private http: HttpClient) { 
-    
+  constructor(private http: HttpClient, private projectService: ProjectService) {
+
   }
- 
+
   selectPattern(pattern: Pattern){
     this.selectedPattern = pattern;
     if (!this.selectedPattern.notes) this.getPattern();
@@ -54,13 +55,13 @@ export class PatternService {
       delete temp[index].played;
       delete temp[index].stopped;
     }
-    
+
     console.log({name: this.selectedPattern.name, notes: JSON.stringify(temp)});
-    this.http.post<any>("http://localhost:8080/savePattern", {id: this.selectedPattern.id, name: this.selectedPattern.name, notes: JSON.stringify(temp)}, { withCredentials: true, headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe(
+    this.http.post<number>(`http://localhost:8080/savePattern?projectId=${this.projectService.selectedProject.id}`, {id: this.selectedPattern.id, name: this.selectedPattern.name, notes: JSON.stringify(temp)}, { withCredentials: true, headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe(
       res => {
         this.selectedPattern.id = res;
         console.log(res);
-      }, 
+      },
       err => {
         console.log(err);
       });
@@ -80,7 +81,7 @@ export class PatternService {
   }
 
   getPatterns(){
-    this.http.get<Pattern[]>("http://localhost:8080/getPatternsInfo", { withCredentials: true }).subscribe(
+    this.http.get<Pattern[]>(`http://localhost:8080/getPatternsInfo?projectId=${this.projectService.selectedProject.id}`, { withCredentials: true }).subscribe(
       res => {
         this.patternList = res;
       },

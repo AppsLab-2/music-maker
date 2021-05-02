@@ -21,10 +21,11 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public void saveProject(Project project)
+    public Long saveProject(Project project)
     {
         project.setUser(userService.getCurrentUser());
         repository.save(project);
+        return project.getId();
     }
 
     @Override
@@ -44,5 +45,10 @@ public class ProjectServiceImpl implements ProjectService{
             result.add(p);
         });
         return result;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }

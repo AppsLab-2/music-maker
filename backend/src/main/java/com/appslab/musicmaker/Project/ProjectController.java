@@ -15,8 +15,8 @@ public class ProjectController {
     UserService userService;
 
     @PostMapping("/saveProject")
-    private void saveProject(@RequestBody Project project) {
-        projectService.saveProject(project);
+    private long saveProject(@RequestBody Project project) {
+        return projectService.saveProject(project);
     }
 
     @GetMapping("/getProject/{id}")
@@ -27,5 +27,10 @@ public class ProjectController {
     @GetMapping("/getList")
     public Project[] getPatternsInfo() {
         return projectService.getList().toArray(new Project[0]);
+    }
+
+    @DeleteMapping("/getProject/{id}")
+    void deletePattern(@PathVariable Long id) {
+        projectService.deleteById(id);
     }
 }

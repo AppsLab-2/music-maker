@@ -2,7 +2,6 @@ package com.appslab.musicmaker;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -33,22 +32,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/saveUser", "/").permitAll()
+                .antMatchers("/saveUser").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .logout()
-                .logoutUrl("/logout").logoutSuccessHandler((new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK)))
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/").deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
                 .and().csrf().disable();
-
     }
+
     @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedMethods("GET").allowedOrigins("http://localhost:4200").allowCredentials(true);
+                registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("*").allowCredentials(true);
             }
         };
     }

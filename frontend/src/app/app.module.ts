@@ -13,10 +13,14 @@ import { PatternPropertiesComponent } from './pattern-properties/pattern-propert
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { LoginFormComponent } from './login-form/login-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
+import { StartPageComponent } from './start-page/start-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { EditorComponent } from './editor/editor.component';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { HttpClientModule } from '@angular/common/http';
     PatternListComponent,
     SampleListComponent,
     PatternPropertiesComponent,
-    LoginFormComponent
+    StartPageComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

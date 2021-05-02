@@ -20,7 +20,7 @@ $ngMusicStudio-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$ngMusicStudio-theme: mat-light-theme((
+$ngMusicStudio-theme: mat-dark-theme((
   color: (
     primary: $ngMusicStudio-primary,
     accent: $ngMusicStudio-accent,
