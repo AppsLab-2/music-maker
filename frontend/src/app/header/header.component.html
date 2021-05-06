@@ -1,8 +1,22 @@
-<button class="button" (click)="patternService.savePattern()" style="margin-right: 150px;"><mat-icon>view_list</mat-icon></button>
+<div style="display: inline-block;">
+    <button class="button" (click)="dropdown = !dropdown" style="margin-right: 150px;"><mat-icon>view_list</mat-icon></button>
+    <div class="dropdown-content" [style.display]="dropdown ? 'block' : 'none'">
+        <mat-selection-list [multiple]="false" style="padding-top: 0;">
+            <mat-list-option (click)="patternService.savePattern()">
+                <div>Save</div>       
+            </mat-list-option>
+            <mat-list-option (click)="router.navigate(['start']);">
+                <div>Close project</div>       
+            </mat-list-option>
+        </mat-selection-list>
+    </div>  
+</div>
+
+
 <div style="display: inline-block;">
     <button class="button"><mat-icon>fast_rewind</mat-icon></button>
-    <button class="button" (click)="player.play(patternService.selectedPattern)"><mat-icon>play_arrow</mat-icon></button>
-    <button class="button" (click)="player.stop()"><mat-icon>stop</mat-icon></button>
+    <button class="button" (click)="play()"><mat-icon>play_arrow</mat-icon></button>
+    <button class="button" (click)="stop()"><mat-icon>stop</mat-icon></button>
     <button class="button"><mat-icon>fast_forward</mat-icon></button>
     <div class="timer">0:00.00</div>
 </div>

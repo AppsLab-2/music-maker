@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService{
 
     private final UserRepository userRepository;
-
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserServiceImpl(UserRepository rep, PasswordEncoder passwordEncoder){
@@ -31,7 +30,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User getUserByName(String s) {
-        return userRepository.findByname(s).get();
+        return userRepository.findByname(s).orElseThrow();
     }
 
     @Override
@@ -49,7 +48,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public User getCurrentUser() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepository.findByname(name).get();
+        return userRepository.findByname(name).orElseThrow();
 
     }
 }

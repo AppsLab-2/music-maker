@@ -11,6 +11,7 @@ export class EditorComponent implements OnInit {
   constructor(public patternService: PatternService) { }
 
   ngOnInit(): void {
+    this.patternService.showEditor = false;
+    this.patternService.songPatternList = [];
   }
-
 }
