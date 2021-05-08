@@ -1,11 +1,11 @@
 package com.appslab.musicmaker.Project;
 
-import com.appslab.musicmaker.Pattern.Pattern;
 import com.appslab.musicmaker.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @RestController
 public class ProjectController {
@@ -15,12 +15,12 @@ public class ProjectController {
     UserService userService;
 
     @PostMapping("/saveProject")
-    private long saveProject(@RequestBody Project project) {
+    private long saveProject(@RequestBody Project project) throws FileNotFoundException {
         return projectService.saveProject(project);
     }
 
     @GetMapping("/getProject/{id}")
-    public Project getProject(@PathVariable Long id) {
+    public Project getProject(@PathVariable Long id) throws IOException {
         return projectService.findById(id);
     }
 
@@ -33,4 +33,5 @@ public class ProjectController {
     void deletePattern(@PathVariable Long id) {
         projectService.deleteById(id);
     }
+
 }

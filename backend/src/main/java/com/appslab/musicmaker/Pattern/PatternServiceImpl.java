@@ -2,12 +2,12 @@ package com.appslab.musicmaker.Pattern;
 
 import com.appslab.musicmaker.Project.ProjectService;
 import com.appslab.musicmaker.User.UserService;
-import org.springframework.aop.scope.ScopedProxyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -52,7 +52,7 @@ public class PatternServiceImpl implements PatternService{
     }
 
     @Override
-    public List<Pattern> getPatternsInfo(Long projectId) {
+    public List<Pattern> getPatternsInfo(Long projectId) throws IOException {
         Iterable<Pattern> infos =  patternRepository.findByproject(projectService.findById(projectId));
         List<Pattern> result = new ArrayList<>();
         infos.forEach(p -> {

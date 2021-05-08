@@ -9,7 +9,7 @@ import java.util.List;
 public interface PatternService {
     long savePattern(Pattern pattern, Long projectId) throws IOException;
     Pattern findById(Long id) throws IOException;
-    List<Pattern> getPatternsInfo(Long projectId);
+    List<Pattern> getPatternsInfo(Long projectId) throws IOException;
     void deleteById(Long id);
     String getNotes(Pattern pattern) throws IOException;
 }

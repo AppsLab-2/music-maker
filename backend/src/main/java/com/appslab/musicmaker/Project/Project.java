@@ -21,8 +21,15 @@ public class Project
     @Column(name = "project_patterns")
     @OneToMany(mappedBy = "project")
     private Set<Pattern> patternList;
+    @Transient
+    private String patterns;
 
-
+    public String getPatterns() {
+        return patterns;
+    }
+    public void setPatterns(String patterns) {
+        this.patterns = patterns;
+    }
     public String getName() {
         return name;
     }
