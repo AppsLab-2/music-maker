@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PatternPlayerService } from '../pattern-player.service';
 import { PatternService } from '../pattern.service';
+import { SongPlayerService } from '../song-player.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,10 +11,23 @@ import { UserService } from '../user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  dropdown: boolean = false;
 
-  constructor(public userService: UserService, public player: PatternPlayerService, public patternService: PatternService) { }
+  constructor(
+    public userService: UserService, public player: PatternPlayerService,
+    public patternService: PatternService, private songService: SongPlayerService, public router: Router
+    ) { }
 
   ngOnInit(): void {
   }
 
+  play(){
+    if (this.patternService.showEditor) this.player.play(this.patternService.selectedPattern);
+    else this.songService.play();
+  }
+
+  stop(){
+    this.songService.stop();
+    this.player.stop();
+  }
 }

@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Pattern } from '../Pattern';
 import { PatternService } from '../pattern.service';
+import { SongPlayerService } from '../song-player.service';
 
 class patternView{
-  name: String;
+  patt: Pattern;
   x: number;
   y: number;
-  constructor(x: number, y: number, name: String){
-    this.name = name;
+  width: number;
+  color: string = "white";
+  constructor(x: number, y: number, patt: Pattern, width: number){
+    this.patt = patt;
     this.x = x;
     this.y = y;
+    this.width = width;
   }
 }
 
@@ -19,14 +24,22 @@ class patternView{
 })
 export class SongEditorComponent implements OnInit {
 
-  constructor(public patternService: PatternService) { }
+  constructor(public patternService: PatternService, public songPlayer: SongPlayerService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  getWidth(patt: Pattern): number{
+    let max: number = 0;
+    patt.notes.forEach(el => {
+      if (el.col > max) max = el.col;
+    });
+    console.log(25*Math.floor(max/4));
+    return 26*Math.floor(max/4) > 0 ? 26*Math.floor(max/4) : 26;
   }
 
   mouseDown(event: MouseEvent){
     if (event.button == 0 && (event.target as HTMLElement).classList.contains("mainGrid")){
-      this.patternService.songPatternList.push(new patternView(Math.ceil(((event.offsetY-15)/50)), Math.ceil(event.offsetX/26), this.patternService.selectedPattern.name));
+      this.patternService.songPatternList.push(new patternView(Math.ceil(((event.offsetY-15)/50)), Math.ceil(event.offsetX/26), this.patternService.selectedPattern, this.getWidth(this.patternService.selectedPattern)));
     }
   }
 

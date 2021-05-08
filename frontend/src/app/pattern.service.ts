@@ -12,9 +12,7 @@ export class PatternService {
   songPatternList: any[] = [];
   showEditor: boolean = false;
 
-  constructor(private http: HttpClient, private projectService: ProjectService) {
-
-  }
+  constructor(private http: HttpClient, private projectService: ProjectService) { }
 
   selectPattern(pattern: Pattern){
     this.selectedPattern = pattern;
@@ -40,6 +38,7 @@ export class PatternService {
   duplicatePattern(){
     this.patternList.push(JSON.parse(JSON.stringify(this.selectedPattern)));
     this.patternList[this.patternList.length-1].name = this.selectedPattern.name + "-Copy";
+    this.patternList[this.patternList.length-1].id = undefined;
     this.selectPattern(this.patternList[this.patternList.length-1]);
   }
 
@@ -84,6 +83,7 @@ export class PatternService {
     this.http.get<Pattern[]>(`http://localhost:8080/getPatternsInfo?projectId=${this.projectService.selectedProject.id}`, { withCredentials: true }).subscribe(
       res => {
         this.patternList = res;
+        this.selectPattern(this.patternList[0]);
       },
       err => {
         console.log(err);

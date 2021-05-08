@@ -24,7 +24,6 @@
 
 .test{
     background-color: white;
-    width: 103px;
     height: 50px;
 }
 
@@ -38,7 +37,7 @@
   margin-left: -16px;
 }
 .line{
-  margin-left: -28px;
+  /*margin-left: -28px;*/
   width: 2px;
   height: calc(51px*20);
   background-color: red;

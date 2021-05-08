@@ -31,6 +31,7 @@ export class StartPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.userService.isLogged) this.showContent = 3;
     this.createForms();
   }
 
