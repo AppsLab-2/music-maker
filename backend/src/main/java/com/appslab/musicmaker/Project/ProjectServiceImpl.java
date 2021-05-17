@@ -1,5 +1,7 @@
 package com.appslab.musicmaker.Project;
 
+import com.appslab.musicmaker.Pattern.Pattern;
+import com.appslab.musicmaker.Pattern.PatternRepository;
 import com.appslab.musicmaker.Pattern.PatternService;
 import com.appslab.musicmaker.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,24 +21,22 @@ import java.util.List;
 public class ProjectServiceImpl implements ProjectService{
 
     private ProjectRepository repository;
-
     private UserService userService;
-
-    private PatternService patternService;
+    private PatternRepository patternRepository;
 
 
     @Autowired
-    public ProjectServiceImpl(ProjectRepository repository, UserService userService,PatternService patternService) {
+    public ProjectServiceImpl(ProjectRepository repository, UserService userService, PatternRepository patternRepository) {
         this.repository = repository;
         this.userService = userService;
-        this.patternService = patternService;
+        this.patternRepository = patternRepository;
     }
 
     @Override
     public Long saveProject(Project project) throws FileNotFoundException {
         project.setUser(userService.getCurrentUser());
-        savePatterns(project);
         repository.save(project);
+        savePatterns(project);
         return project.getId();
     }
 
@@ -62,7 +62,11 @@ public class ProjectServiceImpl implements ProjectService{
 
     @Override
     public void deleteById(Long id) throws IOException {
-        findById(id).getPatternList().forEach(pattern -> patternService.deleteById(pattern.getId()));
+        for (Pattern item : findById(id).getPatternList()){
+            patternRepository.deleteById(item.getId());
+            new File(String.format("notes/%d.json", item.getId())).delete();
+        }
+
         repository.deleteById(id);
 
         new File(String.format("patterns/%d.json", id)).delete();

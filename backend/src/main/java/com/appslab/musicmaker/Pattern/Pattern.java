@@ -1,6 +1,7 @@
 package com.appslab.musicmaker.Pattern;
 
 import com.appslab.musicmaker.Project.Project;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Pattern {
     private String notes;
     @ManyToOne
     @JoinColumn(name="project_id", nullable = false)
+    @JsonIgnore
     private Project project;
 
     public Pattern(){

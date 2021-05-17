@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
 import { PatternPlayerService } from './pattern-player.service';
-import { PatternService } from './pattern.service';
+import { ProjectService } from './project.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongPlayerService {
-  constructor(private player : PatternPlayerService, private patternService: PatternService) { }
+  constructor(private player : PatternPlayerService, private projectService: ProjectService) { }
 
   timer = timer(0, 12);
   sub;
@@ -17,7 +17,7 @@ export class SongPlayerService {
 
   play(){
     this.sub = this.timer.subscribe(x => this.tick(x));
-    this.patternService.songPatternList.forEach(el =>  {
+    this.projectService.selectedProject.patterns.forEach(el =>  {
       el.played = false;
       el.stopped = false;
     })
@@ -31,7 +31,7 @@ export class SongPlayerService {
 
   tick(x: any){
     this.ticks = x;
-    this.patternService.songPatternList.forEach(el => {
+    this.projectService.selectedProject.patterns.forEach(el => {
       if ((el.y*26)-2*26 <= x && !el.played){
         console.log(el.x);
         el.played = true;

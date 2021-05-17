@@ -74,7 +74,7 @@ export class StartPageComponent implements OnInit {
 
   createNew(){
     if (this.projectName != ""){
-      this.projectService.saveProject({name: this.projectName, id: null} as Project);
+      this.projectService.saveProject({name: this.projectName, id: null, patterns: []} as Project);
       this.projectName = "";
     }
   }

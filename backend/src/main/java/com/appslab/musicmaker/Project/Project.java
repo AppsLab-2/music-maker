@@ -2,6 +2,7 @@ package com.appslab.musicmaker.Project;
 
 import com.appslab.musicmaker.Pattern.Pattern;
 import com.appslab.musicmaker.User.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -17,6 +18,7 @@ public class Project
     private String name;
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
+    @JsonIgnore
     private User user;
     @Column(name = "project_patterns")
     @OneToMany(mappedBy = "project")

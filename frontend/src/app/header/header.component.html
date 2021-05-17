@@ -2,7 +2,7 @@
     <button class="button" (click)="dropdown = !dropdown" style="margin-right: 150px;"><mat-icon>view_list</mat-icon></button>
     <div class="dropdown-content" [style.display]="dropdown ? 'block' : 'none'">
         <mat-selection-list [multiple]="false" style="padding-top: 0;">
-            <mat-list-option (click)="patternService.savePattern()">
+            <mat-list-option (click)="save()">
                 <div>Save</div>       
             </mat-list-option>
             <mat-list-option (click)="router.navigate(['start']);">

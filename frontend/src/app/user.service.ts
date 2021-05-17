@@ -14,6 +14,8 @@ export class UserService {
   isLogged: boolean = false;
   msg: String;
 
+  url: String = "http://localhost:8080/";
+
   constructor(private http: HttpClient, private patternService: PatternService, private router: Router, private projectService: ProjectService) { }
 
   userClicked(){
@@ -26,13 +28,13 @@ export class UserService {
     this.patternService.showEditor = false;
     this.user = null;
     this.isLogged = false;
-    this.http.post("http://localhost:8080/logout", { withCredentials: true }).subscribe();
+    this.http.post(this.url + "logout", { withCredentials: true }).subscribe();
     this.router.navigate(['start']);
   }
 
   tryLogin(user: User): Observable<User>{
     let headers = new HttpHeaders({'Authorization' : 'Basic ' + btoa(user.name + ':' + user.password), 'X-Requested-With' : 'XMLHttpRequest'});
-    return this.http.get<User>("http://localhost:8080/user", {headers: headers, withCredentials: true});
+    return this.http.get<User>(this.url + "user", {headers: headers, withCredentials: true});
     /*.subscribe(
       res => {
         this.user = res;
@@ -43,7 +45,7 @@ export class UserService {
   }
 
   tryRegister(user: User): Observable<any>{
-    return this.http.post<User>("http://localhost:8080/saveUser", user)
+    return this.http.post<User>(this.url + "saveUser", user)
     /*.subscribe(
       res => {
         this.tryLogin(user);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PatternService } from '../pattern.service';
+import { ProjectService } from '../project.service';
 
 @Component({
   selector: 'app-editor',
@@ -12,6 +13,6 @@ export class EditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.patternService.showEditor = false;
-    this.patternService.songPatternList = [];
+    //this.patternService.songPatternList = [];
   }
 }

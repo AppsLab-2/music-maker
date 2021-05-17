@@ -21,7 +21,7 @@ public class PatternController {
     }
 
     @GetMapping("/getPatternsInfo")
-    public Pattern[] getPatternsInfo(@RequestParam Long projectId) {
+    public Pattern[] getPatternsInfo(@RequestParam Long projectId) throws IOException {
         return patternService.getPatternsInfo(projectId).toArray(new Pattern[0]);
     }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PatternPlayerService } from '../pattern-player.service';
 import { PatternService } from '../pattern.service';
+import { ProjectService } from '../project.service';
 import { SongPlayerService } from '../song-player.service';
 import { UserService } from '../user.service';
 
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit {
   dropdown: boolean = false;
 
   constructor(
-    public userService: UserService, public player: PatternPlayerService,
+    public userService: UserService, public player: PatternPlayerService, private projectService: ProjectService,
     public patternService: PatternService, private songService: SongPlayerService, public router: Router
     ) { }
 
@@ -29,5 +30,10 @@ export class HeaderComponent implements OnInit {
   stop(){
     this.songService.stop();
     this.player.stop();
+  }
+
+  save(){
+    this.patternService.saveAll();
+    this.projectService.saveProject(this.projectService.selectedProject);
   }
 }

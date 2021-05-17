@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pattern } from '../Pattern';
 import { PatternService } from '../pattern.service';
+import { ProjectService } from '../project.service';
 import { SongPlayerService } from '../song-player.service';
 
 class patternView{
@@ -23,8 +24,9 @@ class patternView{
   styleUrls: ['./song-editor.component.css']
 })
 export class SongEditorComponent implements OnInit {
+  img = new Image();
 
-  constructor(public patternService: PatternService, public songPlayer: SongPlayerService) { }
+  constructor(public patternService: PatternService, public songPlayer: SongPlayerService, public projectService: ProjectService) { }
 
   ngOnInit(): void {}
 
@@ -39,7 +41,7 @@ export class SongEditorComponent implements OnInit {
 
   mouseDown(event: MouseEvent){
     if (event.button == 0 && (event.target as HTMLElement).classList.contains("mainGrid")){
-      this.patternService.songPatternList.push(new patternView(Math.ceil(((event.offsetY-15)/50)), Math.ceil(event.offsetX/26), this.patternService.selectedPattern, this.getWidth(this.patternService.selectedPattern)));
+      this.projectService.selectedProject.patterns.push(new patternView(Math.ceil(((event.offsetY-15)/50)), Math.ceil(event.offsetX/26), this.patternService.selectedPattern, this.getWidth(this.patternService.selectedPattern)));
     }
   }
 
@@ -50,7 +52,6 @@ export class SongEditorComponent implements OnInit {
     if (Math.ceil((event.clientX-200)/26)+2 > 1 ) item.y = Math.ceil((event.clientX-200)/26)+2;
   }
 
-  img = new Image();
   onDragStart(event: DragEvent, item: patternView) {
     event.dataTransfer.setDragImage(this.img, 0, 0);
   }
@@ -62,9 +63,9 @@ export class SongEditorComponent implements OnInit {
 
   onRightClick(item: patternView, event){
     event.preventDefault();
-    const index = this.patternService.songPatternList.indexOf(item, 0);
+    const index = this.projectService.selectedProject.patterns.indexOf(item, 0);
     if (index > -1) {
-      this.patternService.songPatternList.splice(index, 1);
+      this.projectService.selectedProject.patterns.splice(index, 1);
     }
   }
 }

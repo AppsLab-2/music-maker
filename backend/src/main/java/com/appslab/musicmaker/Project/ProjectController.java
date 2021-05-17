@@ -30,7 +30,7 @@ public class ProjectController {
     }
 
     @DeleteMapping("/getProject/{id}")
-    void deletePattern(@PathVariable Long id) {
+    void deletePattern(@PathVariable Long id) throws IOException {
         projectService.deleteById(id);
     }
 
