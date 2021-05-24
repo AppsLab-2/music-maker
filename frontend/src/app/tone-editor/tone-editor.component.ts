@@ -20,7 +20,7 @@ class note{
 
 export class ToneEditorComponent implements OnInit {
   math = Math;
-  keys: string[] = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+  keys: string[] = ['B', 'A', 'G', 'F', 'E', 'D', 'C'];
   constructor(public patternService: PatternService, private player: PatternPlayerService) {}
 
   ngOnInit() {

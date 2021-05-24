@@ -37,12 +37,12 @@ export class PatternPlayerService {
       if ((el.col*26)-75 <= x && !el.played){
         el.played = true;
         el.color = 'orange';
-        this.audioService.playSound((el.y*50)+el.x)
+        this.audioService.playSoundF(el.key, 26)
       }
       if ((el.col*26)-25 <= x && !el.stopped){
         el.stopped = true;
         el.color = '#b9fac5';
-        this.audioService.stopSound((el.y*50)+el.x)
+        //this.audioService.stopSound((el.y*50)+el.x)
       }    
     });
   }
