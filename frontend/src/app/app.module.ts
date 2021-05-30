@@ -20,6 +20,7 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EditorComponent } from './editor/editor.component';
 import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MatListModule } from '@angular/material/list';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    MatListModule
+    MatListModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

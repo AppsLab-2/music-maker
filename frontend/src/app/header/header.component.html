@@ -17,7 +17,7 @@
     <button class="button"><mat-icon>fast_rewind</mat-icon></button>
     <button class="button" (click)="play()"><mat-icon>play_arrow</mat-icon></button>
     <button class="button" (click)="stop()"><mat-icon>stop</mat-icon></button>
-    <button class="button"><mat-icon>fast_forward</mat-icon></button>
+    <button class="button" (click)="songService.test()"><mat-icon>fast_forward</mat-icon></button>
     <div class="timer">0:00.00</div>
 </div>
 <div class= "buttonL" (click)="userService.userClicked()">

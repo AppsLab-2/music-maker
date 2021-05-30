@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public userService: UserService, public player: PatternPlayerService, private projectService: ProjectService,
-    public patternService: PatternService, private songService: SongPlayerService, public router: Router
+    public patternService: PatternService, public songService: SongPlayerService, public router: Router
     ) { }
 
   ngOnInit(): void {

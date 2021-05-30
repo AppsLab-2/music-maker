@@ -7,7 +7,7 @@
       'sample main main'
       'list pattern mixer';
     grid-template-rows: max(50px, 5.336179295624333vh) auto max(200px, 25vh);
-    grid-template-columns: max(150px, 16.008537886873vh) auto auto;
+    grid-template-columns: max(150px, 16.008537886873vh) auto 50%;
     grid-gap: 1px;
   }
   

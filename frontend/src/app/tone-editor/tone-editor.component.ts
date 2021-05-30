@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { AudioService } from '../audio.service';
 import { PatternPlayerService } from '../pattern-player.service';
 import { PatternService } from '../pattern.service';
 
@@ -21,7 +22,7 @@ class note{
 export class ToneEditorComponent implements OnInit {
   math = Math;
   keys: string[] = ['B', 'A', 'G', 'F', 'E', 'D', 'C'];
-  constructor(public patternService: PatternService, private player: PatternPlayerService) {}
+  constructor(public patternService: PatternService, private player: PatternPlayerService, public audioService: AudioService) {}
 
   ngOnInit() {
 

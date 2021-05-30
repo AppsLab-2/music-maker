@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
+import * as Tone from 'tone'
 import { AudioService } from './audio.service';
 import { Pattern } from './Pattern';
 
@@ -29,6 +30,7 @@ export class PatternPlayerService {
     if (this.sub) this.sub.unsubscribe();
     this.sub = null;
     this.ticks = 0;
+    if (this.list) this.list.forEach(el => el.color = '#b9fac5');
   }
 
   tick(x: any){

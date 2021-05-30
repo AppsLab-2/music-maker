@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatSliderChange } from '@angular/material/slider';
+import { AudioService } from '../audio.service';
 import { PatternService } from '../pattern.service';
 
 @Component({
@@ -13,4 +15,7 @@ export class PatternPropertiesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onMovChange(event: MatSliderChange){
+    this.patternService.selectedPattern.mov = event.value;
+  }
 }

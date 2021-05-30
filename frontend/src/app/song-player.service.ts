@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { timer } from 'rxjs';
 import { PatternPlayerService } from './pattern-player.service';
 import { ProjectService } from './project.service';
+import * as Tone from 'tone'
 
 @Injectable({
   providedIn: 'root'
@@ -42,9 +43,18 @@ export class SongPlayerService {
       if ((el.y*26)-2*26+el.width <= x && !el.stopped){
         el.stopped = true;
         el.color = 'white';
-        this.player.stop();
+        //this.player.stop();
         console.log("stopping: " + el.patt.name);
       }    
     });
+  }
+
+  test(){
+    Tone.Transport.bpm.value = 60;
+    Tone.Transport.scheduleRepeat(function(time){
+      console.log(time);
+      console.log(Tone.Transport.bpm.value);
+    }, "1n");
+    Tone.Transport.start();
   }
 }

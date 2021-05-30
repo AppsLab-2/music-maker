@@ -22,7 +22,7 @@ export class PatternService {
   }
 
   addNewPattern(){
-    let pattern: Pattern = {id: null, name: "NewPattern" + this.patternList.length, notes: []} as Pattern;
+    let pattern: Pattern = {id: null, name: "NewPattern" + this.patternList.length, notes: [], mov: 0} as Pattern;
     this.patternList.push(pattern);
     this.selectedPattern = pattern;
     this.savePattern(pattern);
