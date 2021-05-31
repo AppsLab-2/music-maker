@@ -15,10 +15,13 @@ export class PatternPlayerService {
   sub;
   list: any[];
   ticks = 0;
+  patt: Pattern;
 
 
   play(pattern: Pattern){
+    console.log(pattern);
     this.list = pattern.notes;
+    this.patt = pattern;
     this.sub = this.timer.subscribe(x => this.tick(x));
     this.list.forEach(el =>  {
       el.played = false;
@@ -39,7 +42,7 @@ export class PatternPlayerService {
       if ((el.col*26)-75 <= x && !el.played){
         el.played = true;
         el.color = 'orange';
-        this.audioService.playSoundF(el.key, 26)
+        this.audioService.playSoundF(el.key, 26, this.patt)
       }
       if ((el.col*26)-25 <= x && !el.stopped){
         el.stopped = true;

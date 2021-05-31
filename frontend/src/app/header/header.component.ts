@@ -13,6 +13,7 @@ import { UserService } from '../user.service';
 })
 export class HeaderComponent implements OnInit {
   dropdown: boolean = false;
+  Math: Math = Math;
 
   constructor(
     public userService: UserService, public player: PatternPlayerService, private projectService: ProjectService,

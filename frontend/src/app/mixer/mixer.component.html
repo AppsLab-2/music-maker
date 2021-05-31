@@ -1,0 +1,5 @@
+<div style="position: absolute; color: white; width: 50%; text-align: center; margin-top: 5px;">Volume Control</div>
+<div style="white-space: nowrap; display: inline-block; margin-top: 40px;">
+    <div style="display: inline-block;"><mat-slider vertical color="primary" min="-40" max="10" [(ngModel)]="this.audio.synth.volume.value" (input)="change_vol_master($event)"></mat-slider><p style="text-align: center; color: white; font-size: 12px;">main</p></div>
+    <div *ngFor="let item of [].constructor(20); index as i" style="display: inline-block;"><mat-slider vertical color="primary" value="50" [disabled]="true"></mat-slider><p style="text-align: center; color: white; font-size: 12px;">{{i+1}}</p></div>
+</div>

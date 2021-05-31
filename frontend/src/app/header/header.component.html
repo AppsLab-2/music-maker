@@ -18,7 +18,7 @@
     <button class="button" (click)="play()"><mat-icon>play_arrow</mat-icon></button>
     <button class="button" (click)="stop()"><mat-icon>stop</mat-icon></button>
     <button class="button" (click)="songService.test()"><mat-icon>fast_forward</mat-icon></button>
-    <div class="timer">0:00.00</div>
+    <div class="timer">{{Math.floor(songService.clock/60)}}:{{songService.clock.toLocaleString('en-us', {minimumIntegerDigits: 2, maximumFractionDigits: 2, minimumFractionDigits: 2})}}</div>
 </div>
 <div class= "buttonL" (click)="userService.userClicked()">
     <div style="font-size: 16px; display: inline-block; margin: auto 6px; color: white;">{{userService.isLogged ? userService.user.name : "Login"}}</div>

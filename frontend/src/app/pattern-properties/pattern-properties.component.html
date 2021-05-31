@@ -1,3 +1,4 @@
+<div style="text-align: center;"><div style="color: white; display: inline-block; margin-top: 5px;">Pattern Properties</div></div>
 <div *ngIf="patternService.selectedPattern != null" style="min-width: 370px;">
     <div style="margin: 20px 30px 0px;">
         <div style="float: left;">
@@ -10,7 +11,8 @@
             <div class="button" style="background-color: #69474b;" (click)="patternService.deletePattern(patternService.selectedPattern)">Delete Pattern</div>  
         </div>
         <div style="margin-left: 50px; display: inline-block;">
-            <mat-slider [max]="4" [min]="0" [thumbLabel]="true" [(ngModel)]="this.patternService.selectedPattern.mov" (input)="onMovChange($event)" color="primary"></mat-slider>
+            <p style="margin: 0px; color: white; font-size: 12px;">Scale offset:</p>
+            <mat-slider [max]="4" [min]="0" [thumbLabel]="true" [(ngModel)]="this.patternService.selectedPattern.offset" (input)="onMovChange($event)" color="primary"></mat-slider>
         </div>
     </div>   
 </div>

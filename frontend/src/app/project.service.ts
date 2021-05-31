@@ -33,7 +33,15 @@ export class ProjectService {
   }
 
   getPatternFromId(id: number, list: any[]){
-    return list.filter(item => item.id == id)[0];
+    let patt = list.filter(item => item.id == id)[0];
+    this.http.get<any>(this.url + `getPattern/${id}`, { withCredentials: true }).subscribe(
+      res => {
+        patt.notes = JSON.parse(res.notes);
+      },
+      err => {
+        console.log(err);
+      });
+    return patt;
   }
 
   selectProject(project: Project){
@@ -62,12 +70,11 @@ export class ProjectService {
     this.http.post<number>(this.url + `saveProject`, {name: project.name, id: project.id, patterns: JSON.stringify(project.patterns)}, { withCredentials: true, headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe(
       res => {
         project.id = res;
-        this.projectList.push(project);
+        if (!this.projectList.includes(project)) this.projectList.push(project);
         console.log(project);
         project.patterns.forEach(el => {
           el.patt = this.getPatternFromId(el.patId, project.patternList);
         }); 
-        console.log(project);
       }, 
       err => {
         console.log(err);

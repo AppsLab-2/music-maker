@@ -16,6 +16,6 @@ export class PatternPropertiesComponent implements OnInit {
   }
 
   onMovChange(event: MatSliderChange){
-    this.patternService.selectedPattern.mov = event.value;
+    this.patternService.selectedPattern.offset = event.value;
   }
 }

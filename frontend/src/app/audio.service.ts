@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as Tone from 'tone'
+import { Pattern } from './Pattern';
 import { PatternService } from './pattern.service';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class AudioService {
 
   constructor(private patternService: PatternService) {
     this.synth = new Tone.Synth().toDestination();
-    
+    this.synth.volume.value = -15;
    }
 
   playSound(id: number){
@@ -27,11 +28,9 @@ export class AudioService {
 
   }
 
-  playSoundF(tone: number, lenght: number){
-    console.log(this.keyss[(tone-(7*Math.floor(tone/7)))]+""+(this.patternService.selectedPattern.mov+3-Math.floor((tone-1)/7)));
-
-    this.synth.volume.value = -20;
-    this.synth.triggerAttackRelease(this.keyss[(tone-(7*Math.floor(tone/7)))]+""+(this.patternService.selectedPattern.mov+3-Math.floor((tone-1)/7)), 0.05);
+  playSoundF(tone: number, lenght: number, patt: Pattern){
+    console.log(this.keyss[(tone-(7*Math.floor(tone/7)))]+""+(patt.offset+3-Math.floor((tone-1)/7)));
+    this.synth.triggerAttackRelease(this.keyss[(tone-(7*Math.floor(tone/7)))]+""+(patt.offset+3-Math.floor((tone-1)/7)), 0.05);
   }
 
   

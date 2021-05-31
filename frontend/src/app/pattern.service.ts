@@ -22,7 +22,7 @@ export class PatternService {
   }
 
   addNewPattern(){
-    let pattern: Pattern = {id: null, name: "NewPattern" + this.patternList.length, notes: [], mov: 0} as Pattern;
+    let pattern: Pattern = {id: null, name: "NewPattern" + this.patternList.length, notes: [], offset: 0} as Pattern;
     this.patternList.push(pattern);
     this.selectedPattern = pattern;
     this.savePattern(pattern);
@@ -66,7 +66,7 @@ export class PatternService {
       delete temp[index].stopped;
     }
 
-    this.http.post<number>(this.url + `savePattern?projectId=${this.projectService.selectedProject.id}`, {id: pattern.id, name: pattern.name, notes: JSON.stringify(temp)}, { withCredentials: true, headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe(
+    this.http.post<number>(this.url + `savePattern?projectId=${this.projectService.selectedProject.id}`, {id: pattern.id, name: pattern.name, notes: JSON.stringify(temp), offset: pattern.offset}, { withCredentials: true, headers : new HttpHeaders({ 'Content-Type': 'application/json' })}).subscribe(
       res => {
         pattern.id = res;
         console.log(res);

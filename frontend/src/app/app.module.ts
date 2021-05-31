@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { EditorComponent } from './editor/editor.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSliderModule } from '@angular/material/slider';
+import { MixerComponent } from './mixer/mixer.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MatSliderModule } from '@angular/material/slider';
     SampleListComponent,
     PatternPropertiesComponent,
     StartPageComponent,
-    EditorComponent
+    EditorComponent,
+    MixerComponent
   ],
   imports: [
     BrowserModule,

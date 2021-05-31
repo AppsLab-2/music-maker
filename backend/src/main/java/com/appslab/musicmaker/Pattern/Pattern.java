@@ -21,6 +21,8 @@ public class Pattern {
     @JoinColumn(name="project_id", nullable = false)
     @JsonIgnore
     private Project project;
+    @Column(name = "scale_offset")
+    private byte offset;
 
     public Pattern(){
 
@@ -52,5 +54,13 @@ public class Pattern {
 
     public long getId() {
         return id;
+    }
+
+    public byte getOffset() {
+        return offset;
+    }
+
+    public void setOffset(byte offset) {
+        this.offset = offset;
     }
 }

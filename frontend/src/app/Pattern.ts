@@ -3,5 +3,5 @@ export interface Pattern{
     name: String;
     notes: any[];
 
-    mov: number;
+    offset: number;
 }

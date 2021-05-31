@@ -10,12 +10,13 @@ import * as Tone from 'tone'
 export class SongPlayerService {
   constructor(private player : PatternPlayerService, private projectService: ProjectService) { }
 
-  timer = timer(0, 12);
+  timer = timer(0, 24);
   sub;
   ticks = 0;
+  clock = 0;
   //this.patternService.songPatternList;
 
-
+  
   play(){
     this.sub = this.timer.subscribe(x => this.tick(x));
     this.projectService.selectedProject.patterns.forEach(el =>  {
@@ -28,10 +29,13 @@ export class SongPlayerService {
     if (this.sub) this.sub.unsubscribe();
     this.sub = null;
     this.ticks = 0;
+    this.clock = 0;
+    this.player.stop();
   }
 
   tick(x: any){
     this.ticks = x;
+    this.clock = x*0.024;
     this.projectService.selectedProject.patterns.forEach(el => {
       if ((el.y*26)-2*26 <= x && !el.played){
         console.log(el.x);
